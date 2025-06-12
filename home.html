@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madras Spanish Congregation | Tablero</title>
+    <link rel="icon" type="image/x-icon" href="madrasjw.ico">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .pdf-button {
+            border: 2px solid gray;
+            font-weight: bold;
+            padding: 12px 24px;
+            background-color: #3f3f46;
+            color: #d6a25e;
+            font-size: 18px;
+            height: 60px;
+            width: 100%;
+            margin: 16px 0;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            background: white;
+            padding: 0;
+            width: 95%;
+            height: 85%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #555;
+            cursor: pointer;
+            z-index: 3000;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #5e4b3c;
+            color: #f8f5f2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 3000;
+        }
+    
+        header {
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #d6a25e;
+            color: white;
+            padding: 10px 0;
+            border-bottom: 2px solid black;
+        
+        }
+
+        footer {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #5e4b3c;
+            color: #f8f5f2;
+            padding: 10px;
+            border-top: 2px solid black;
+        }
+
+    @media (max-width: 768px) {
+        .pdf-button {
+            background-color: #3f3f46;
+            color: #d6a25e;
+            border: 2px solid #d6a25e;
+            font-weight: bold;
+
+            display: block;
+            width: 95%;
+            margin: 16px auto;
+        }
+    }
+
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    body.modal-open {
+        overflow: hidden;
+    }
+</style>
+
+
+
+</head>
+<body>
+
+<header>
+    <h1>Madras Spanish Congregation | Tablero</h1>
+</header>
+
+    <button class="pdf-button" onclick="openModal('listofprivilege.pdf')">Lista de Privilegios</button>
+    <button class="pdf-button" onclick="openVidaModal()">Vida y Ministerio</button>
+    <button class="pdf-button" onclick="openModal('readers.pdf')">Presidentes y Lectores</button>
+    <button class="pdf-button" onclick="openModal('events.pdf')">Eventos Teocraticos</button>
+    <button class="pdf-button" onclick="openModal('hospitality.pdf')">Hospitalidad</button>
+    <button class="pdf-button" onclick="openModal('preaching.pdf')">Conductor de Grupo de Servicio</button>
+    <button class="pdf-button" onclick="openModal('lights.pdf')">Ayudantes de Luces</button>
+    <button class="pdf-button" onclick="openModal('cleaning.pdf')">Grupos de Limpieza</button>
+    <button class="pdf-button" onclick="openModal('visitors.pdf')">Discursantes</button>
+
+    <!-- General Modal -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <iframe id="modalIframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Vida y Ministerio Modal -->
+    <div id="vidaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeVidaModal()">&times;</span>
+            <iframe id="vidaIframe" src="lifeandministry1.pdf#page=1"></iframe>
+            <button class="toggle-btn" onclick="toggleVidaPage()">Cambiar Página</button>
+        </div>
+    </div>
+
+    <script>
+        
+let scrollPosition = 0;
+function openModal(pdfFile) {
+    scrollPosition = window.scrollY;
+    
+
+            closeVidaModal();
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = pdfFile;
+            modal.style.display = 'block';
+document.body.classList.add('modal-open');
+        }
+
+        
+function closeModal() {
+    document.body.classList.remove('modal-open');
+    
+    
+    window.scrollTo(0, scrollPosition);
+
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = '';
+            modal.style.display = 'none';
+document.body.classList.remove('modal-open');
+        }
+
+        let currentVidaPage = 1;
+
+        
+function openVidaModal() {
+    scrollPosition = window.scrollY;
+    
+
+            closeModal();
+            const vidaModal = document.getElementById('vidaModal');
+            const iframe = document.getElementById('vidaIframe');
+            iframe.src = 'lifeandministry1.pdf#page=1';
+            currentVidaPage = 1;
+            vidaModal.style.display = 'block';
+document.body.classList.add('modal-open');
+        }
+
+        
+function closeVidaModal() {
+    document.body.classList.remove('modal-open');
+    
+    
+    window.scrollTo(0, scrollPosition);
+
+            const vidaModal = document.getElementById('vidaModal');
+            const iframe = document.getElementById('vidaIframe');
+            iframe.src = '';
+            vidaModal.style.display = 'none';
+document.body.classList.remove('modal-open');
+        }
+
+        function toggleVidaPage() {
+            const iframe = document.getElementById('vidaIframe');
+            if (currentVidaPage === 1) {
+                iframe.src = 'lifeandministry2.pdf#page=2';
+                currentVidaPage = 2;
+            } else {
+                iframe.src = 'lifeandministry1.pdf#page=1';
+                currentVidaPage = 1;
+            }
+        }
+        
+    </script>
+
+<script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+        window.location.href = "login.html";
+    }
+</script>
+
+
+
+<footer>
+    <p>
+        &copy; 2025 Zahir Cabral. <br>
+        Todos los archivos son confidenciales, por favor no los comparta con nadie fuera de la congregación.
+    </p>
+</footer>
+
+</body>
+</html>

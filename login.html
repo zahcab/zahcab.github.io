@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madras Spanish Congregation | Login</title>
+    <link rel="icon" type="image/x-icon" href="madrasjw.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #f8f5f2;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            padding: 12px;
+            width: 80%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-container button {
+            padding: 12px 20px;
+            background-color: #3f3f46;
+            color: #f8f5f2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 80%;
+        }
+        .login-container button:hover {
+            background-color: #52525b;
+        }
+        @media (max-width: 768px) {
+            html, body {
+                height: 100%;
+                overflow: hidden;
+                padding: 10px;
+            }
+            .login-container input,
+            .login-container button {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Bienvenido!</h2>
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="checkPassword()">Login</button>
+    </div>
+
+    <script>
+        const correctPassword = '144';
+    
+        function checkPassword() {
+            const enteredPassword = document.getElementById('password').value;
+            if (enteredPassword === correctPassword) {
+                // ✅ Set login status in sessionStorage
+                sessionStorage.setItem("authenticated", "true");
+                window.location.href = 'home.html'; // Redirect to home page
+            } else {
+                alert('Incorrect password, please try again.');
+            }
+        }
+
+        document.getElementById("password").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+    </script>    
+
+</body>
+</html>

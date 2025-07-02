@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -219,7 +218,7 @@ function closeVidaModal() {
             const iframe = document.getElementById('vidaIframe');
             iframe.src = '';
             vidaModal.style.display = 'none';
-document.body.classList.remove('modal-open');
+            document.body.classList.remove('modal-open');
         }
 
         function toggleVidaPage() {
@@ -235,22 +234,22 @@ document.body.classList.remove('modal-open');
         
     </script>
 
-<script>
-    if (sessionStorage.getItem("authenticated") !== "true") {
-        window.location.href = "login.html";
-    }
-</script>
-
-
+    <script>
+        if (sessionStorage.getItem("authenticated") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
 
 <footer>
     <p>
         Todos los archivos son confidenciales, por favor no los comparta con nadie fuera de la congregación.
-        <br>
-        <br>
-        Actualizado: Julio 2, 2025.
+        <br><br>
+        <a href="changelog.html" style="color: #f8f5f2; text-decoration: underline;">
+            Actualizado: Julio 2, 2025.
+        </a>
     </p>
 </footer>
+
 
 </body>
 </html>

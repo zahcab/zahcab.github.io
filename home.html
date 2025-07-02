@@ -140,7 +140,6 @@
     <button class="pdf-button" onclick="openModal('listofprivilege.pdf')">Lista de Privilegios</button>
     <button class="pdf-button" onclick="openVidaModal()">Vida y Ministerio</button>
     <button class="pdf-button" onclick="openModal('readers.pdf')">Presidentes y Lectores</button>
-    <button class="pdf-button" onclick="openModal('events.pdf')">Eventos Teocraticos</button>
     <button class="pdf-button" onclick="openModal('hospitality.pdf')">Hospitalidad</button>
     <button class="pdf-button" onclick="openModal('preaching.pdf')">Conductor de Grupo de Servicio</button>
     <button class="pdf-button" onclick="openModal('lights.pdf')">Ayudantes de Luces</button>
@@ -238,7 +237,7 @@ document.body.classList.remove('modal-open');
 
 <script>
     if (sessionStorage.getItem("authenticated") !== "true") {
-        window.location.href = "index.html";
+        window.location.href = "login.html";
     }
 </script>
 
